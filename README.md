@@ -42,7 +42,7 @@ können sie die funktion allerdings aktivieren.
 
 #REGISTER.HTML
 register.html:128 - Sie können die Anforderungen an das einzugebende Passwort ändern. Default : Pass muss mindestens 7 Zeichen lang sein, eine Zahl, einen Klein- und einen Großbuchstaben enthalten.
-               |
+               
                 - pass.length>6 = Passwort länge 
                 - pass.match(/\d{x,}/) - Mindestens x Zahlen
                 - pass.match(/[a-z]{x,}/) - Mindestens x Kleinbuchstaben
