@@ -34,12 +34,12 @@ Bevor sie die Websides benutzen können, müssen sie diese auf Ihre Ansprüche i
 
 
 #LOGIN.HTML
-login.html:6 - Hintergrundfarbe oder -bild festlegen.
-login.html:93 - Link der Seite einfügen, auf die der Nutzer nach erfolgreichem Login geleitet werden soll.
-login.html:94 & login.html:95 - Bei Aufrufen der login.html Seite angezeigter Text (Kann ausgestellt werden, indem sie die "function info()" löschen)
+        login.html:6 - Hintergrundfarbe oder -bild festlegen.
+        login.html:93 - Link der Seite einfügen, auf die der Nutzer nach erfolgreichem Login geleitet werden soll.
+        login.html:94 & login.html:95 - Bei Aufrufen der login.html Seite angezeigter Text (Kann ausgestellt werden, indem sie die "function info()" löschen)
 
-Bei der Login.html habe ich die Funktion, dass man sich nur mithilfe der Email Adresse einloggen kann unwirksam gemacht. Indem sie in login.html:103,131,136,159 und 167 die Kommentarzeichen entfernen,
-können sie die funktion allerdings aktivieren.
+        Bei der Login.html habe ich die Funktion, dass man sich nur mithilfe der Email Adresse einloggen kann unwirksam gemacht. Indem sie in login.html:103,131,136,159 und 167 die Kommentarzeichen entfernen,
+        können sie die funktion allerdings aktivieren.
 
 
 #REGISTER.HTML
@@ -52,6 +52,7 @@ register.html:128 - Sie können die Anforderungen an das einzugebende Passwort �
     
     Durch löschen der jeweiligen Einträge oder ändern des x Wertes können sie die Stärke, die das Passwort haben muss, ändern.
 register.html:138 - Hier können sie den Text ändern, der Ausgegeben wird, wenn das Passwort die Anforderungen nicht einhält. Bei löschen der Zeile wird keine Nachricht ausgegeben.
+
 register.html:149 - Sie können hier die maximal Länge des Benutzernamens ändern. (Am besten abgestimmt auf die Länge des Varchars in ihrer MYSQL Datenbank)
 
 #CONNECT.PHP
