@@ -42,10 +42,12 @@ können sie die funktion allerdings aktivieren.
 
 #REGISTER.HTML
 register.html:128 - Sie können die Anforderungen an das einzugebende Passwort ändern. Default : Pass muss mindestens 7 Zeichen lang sein, eine Zahl, einen Klein- und einen Großbuchstaben enthalten.
+               |
                 - pass.length>6 = Passwort länge 
                 - pass.match(/\d{x,}/) - Mindestens x Zahlen
                 - pass.match(/[a-z]{x,}/) - Mindestens x Kleinbuchstaben
                 - pass.match(/[A-Z]{x,}/) - Mindestens x Großbuchstaben
+    
     Durch löschen der jeweiligen Einträge oder ändern des x Wertes können sie die Stärke, die das Passwort haben muss, ändern.
 register.html:138 - Hier können sie den Text ändern, der Ausgegeben wird, wenn das Passwort die Anforderungen nicht einhält. Bei löschen der Zeile wird keine Nachricht ausgegeben.
 register.html:149 - Sie können hier die maximal Länge des Benutzernamens ändern. (Am besten abgestimmt auf die Länge des Varchars in ihrer MYSQL Datenbank)
