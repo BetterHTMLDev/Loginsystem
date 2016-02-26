@@ -13,12 +13,14 @@ Inhalt des Loginsystems: login.html ; register.html ; connect.php ; logincheck.p
 #WICHTIG
 
 MYSQL EMPFEHLUNG: Ich rate dringend, in der Mysql Datenbank die folgenden Dinge zu übernehmen. 
+              
                 - TABELLENNAME "user"
                 - SPALTE 1: "firstname"
                 - SPALTE 2: "lastname"
                 - SPALTE 3: "username"
                 - SPALTE 4: "email"
                 - SPALTE 5: "password"
+
 Falls sie diese Dinge nicht in dieser Reihenfolge kann und wird es zu Fehlern kommen, wenn sie nicht in jeder PHP Datei die jeweiligen vars ändern.
 
 #BEVOR BENUTZUNG:
