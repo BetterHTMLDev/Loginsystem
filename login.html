@@ -1,0 +1,213 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<style>
+			body{
+				background:;
+				padding: 0;
+				margin: 0;
+			}
+			.container{
+				width: 600px;
+				height:auto;
+				background-color:white;
+				margin: 0 auto;
+				margin-top: 0px;
+				border-radius:10px;
+				border-style:solid;
+				border-color: darkgray;
+				margin-top:5px;
+				
+			}
+			.container h1{
+				font-family: 'Comic Sans MS';
+				text-align:center;
+			}
+			.name{
+				width:100%;
+			}
+			.name input{
+				width:90%;
+				height:30px;
+				margin-left:20px;
+				text-align:center;
+			}
+			.password{
+				width:100%;
+			}
+			.password input{
+				width:90%;
+				height:30px;
+				margin-left:20px;
+				text-align:center;
+			}
+			span{
+				font-family: 'Comic Sans MS';
+				margin-left:10px;
+				font-size:x-large;
+				font-weight:900;
+			}
+			.submit a{
+				width:60%;
+				height:40px;
+				display:block;
+				border-style: solid;
+				border-color:darkgray;
+				margin-left:115px;			
+				font-family: 'Comic Sans MS';
+				font-size:x-large;
+				margin-top:10px;
+				color:black;
+				text-decoration: none;
+				text-align:center;
+				background-color:lightgray;
+				
+			}
+			#error{
+				
+				margin: 0 auto;
+				width:600px;
+				height:100px;
+				background-color:red;
+                border-radius:20px; 
+				border-style: solid;
+				margin-top:5px;
+				border-color:lightgray;
+				visibility:hidden;
+				
+			}
+			#error h2{
+				text-align:center;
+				margin-top:10px;
+			}
+			
+			
+			
+			
+			
+				
+		</style>
+		<script src="jquery.js"></script>
+		<script>
+		var URL = "logincheck.php";
+		var afterloginurl = "index.php";
+		var infosatz1 = "Vielen Dank für den Download.";
+		var infosatz2 = "github.com/BetterHTMLDev";
+		function herror(){
+			$( "#error" ).hide();
+		}
+		function backerror(){
+			$( "#error" ).slideUp( "fast" );
+		}
+		
+	/*	function checkemail(){
+			backerror();
+			bol1 = false;
+			bol2 = false;
+			bol3 = false;
+			c = document.getElementById("email").value.length;
+			b = document.getElementById("email").value;
+			for(i=0;i<c;i++){
+				if(b[i] == "@"){
+					bol1 = true;
+				}
+				if(b[i] == "."){
+					bol2 = true;
+					
+				}
+			}
+			document.getElementById("hidden_bol1").innerHTML=bol1;				
+			document.getElementById("hidden_bol2").innerHTML=bol2;
+			if(bol1 == true && bol2 == true ){
+				document.getElementById("email").style.background = "white";
+			}
+			if(bol1 == false || bol2 == false ){
+				document.getElementById("email").style.background = "red";
+			}
+			if(c==0){
+				document.getElementById("email").style.background = "white";
+			}
+		}
+		*/
+		
+		function submit(){
+			herror();
+		
+		//	if(document.getElementById("hidden_bol1").innerHTML == "true" && document.getElementById("hidden_bol2").innerHTML == "true"){
+					jQuery.ajax({
+					type:"POST",
+					data:'email='+document.getElementById("email").value+'&password='+document.getElementById("pass").value,
+					url:URL,
+			
+					cache:false,
+					success:function(response){
+                        
+						if(response == "complete"){
+							window.location.href = afterloginurl;
+						}
+						if(response == "failed"){
+							document.getElementById("e1").innerHTML = "Diese Kombination ist nicht korrekt.";
+							document.getElementById("e2").innerHTML = "Bitte versuche es erneut";	
+							document.getElementById("error").style.background = "red";
+							document.getElementById("error").style.visibility = "visible";
+								$( "#error" ).slideDown( "fast", function(){
+					
+							});		
+						}
+                    }
+				});		
+			/*}else{
+				document.getElementById("error").style.visibility = "visible";
+				document.getElementById("e1").innerHTML = "Bitte geben sie eine gültige Email ein.";
+				document.getElementById("e2").innerHTML = "Zum Beispiel: ichmagdiesewebsite@provider.com";	
+				document.getElementById("error").style.background="red";
+				$( "#error" ).slideDown( "fast", function(){
+					
+				});
+			}*/
+
+		}
+		function info(){
+			document.getElementById("e1").innerHTML = infosatz1;
+							document.getElementById("e2").innerHTML = infosatz2;	
+							document.getElementById("error").style.background="lightgray";
+							document.getElementById("error").style.visibility = "visible";
+						
+							$( "#error" ).slideDown( "fast" );	
+		}
+			
+		</script>
+	
+	</head>
+	
+	<body onload="herror();info()">
+		<div id="error">
+				<h2 id="e1"><h2 id="e2" style="margin-top:0px;"></h2></h2>
+			</div>
+		<div class="container">
+			<h1>Login</h1>
+			<hr>
+			
+			<div class="name">	
+				<span>Email oder Benutzername:</span>
+				<form>
+					<input type="text" onchange="checkemail()" id="email"/>
+				</form>
+			</div>	
+			<div class="password">
+				<span>Passwort:</span>
+				<form>
+					<input type="password" id="pass">
+				</form>			
+			</div>	
+			<div class="submit">
+				
+					<a href="javascript:submit()">Einloggen</a>
+				<br>
+			</div>
+			
+		</div>
+		
+		<p id="hidden_bol1" hidden></p><p id="hidden_bol2" hidden></p>
+	</body>
+</html>

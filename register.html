@@ -1,0 +1,290 @@
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<style>
+			body{
+				background:;
+				padding: 0;
+				margin: 0;
+			}
+			.c{
+				width: 600px;
+				height:auto;
+				background-color:white;
+				margin: 0 auto;
+				margin-top: 0px;
+				border-radius:10px;
+				border-style:solid;
+				border-color: darkgray;
+				margin-top:5px;
+				
+			}
+			.c h1{
+				font-family: 'Comic Sans MS';
+				text-align:center;
+			}
+			
+			.c input{
+				width:90%;
+				height:30px;
+				margin-left:20px;
+				text-align:center;
+			}
+			span{
+				font-family: 'Comic Sans MS';
+				margin-left:10px;
+				font-size:x-large;
+				font-weight:900;
+			}
+			#error{
+				
+				margin: 0 auto;
+				width:600px;
+				height:auto;
+				
+                border-radius:20px; 
+				border-style: solid;
+				margin-top:0px;
+				border-color:lightgray;
+		
+				
+			}
+			#error h3{
+				text-align:center;
+				margin-top:10px;
+			}
+				
+		</style>
+		
+		<script src="jquery.js"></script>
+		
+		<script>
+			
+			var emailURL = "checkemail.php";
+			var usernameURL = "checkname.php";
+			var submitURL = "register.php";
+			function clear(){
+				$( "#error" ).hide();
+			}
+			function starterror(ho,ht,co){
+				document.getElementById("e1").innerHTML = ho;
+				document.getElementById("e2").innerHTML = ht;	
+				document.getElementById("error").style.background = co;			
+								$( "#error" ).slideDown( "fast", function(){
+					
+				});		
+			}
+			function stoperror(){
+				$( "#error" ).slideUp( "fast", function(){
+					
+				});		
+			}	
+			function checkemail(){
+				stoperror();
+				bol1 = false;
+				bol2 = false;
+				c = document.getElementById("email").value.length;
+				b = document.getElementById("email").value;
+			for(i=0;i<c;i++){
+				if(b[i] == "@"){
+					bol1 = true;
+				}
+				if(b[i] == "."){
+					bol2 = true;
+					
+				}
+			}
+			if(bol1 != true || bol2 != true){
+				document.getElementById("email").style.background = "red";
+			}else{
+				document.getElementById("email").style.background = "white";
+				
+				jQuery.ajax({
+					type:"POST",
+					data:'email='+document.getElementById("email").value,
+					url:emailURL,
+			
+					cache:false,
+					success:function(response){
+						if(response=="ok"){
+							document.getElementById("email").style.background="white";		
+							bolemail = true;
+						}else{
+							starterror("Diese Email wird schon benutzt","Falls das ein Fehler ist, wende dich an den Support","red");
+							document.getElementById("email").style.background="red";		
+							bolemail = false;
+						}
+					}
+				});
+			}
+				
+			
+			}
+			function checkpassgood(){
+				
+				pass = document.getElementById("pass1").value;
+			  if(pass.length != 0){
+				if(pass.length>6 && pass.match(/\d{1,}/) && pass.match(/[a-z]{1,}/) && pass.match(/[A-Z]{1,}/)){
+					document.getElementById("pass1").style.background="white";
+					bolpass1 = true;
+					
+					$( "#error" ).slideUp( "fast", function(){
+					
+				});	
+				return true;	
+				}else{
+					document.getElementById("pass1").style.background="red";
+					starterror("Das Passwort muss mindestens 7 Zeichen,","Groß-,Kleinbuchstaben und eine Zahl enthalten.","red");
+					bolpass1 = false;
+				}			
+				}else{
+				bolpass1 = false;
+				
+				}
+			}
+			function checkusername(){
+				stoperror();
+				document.getElementById("username").style.background="white";	
+				if(document.getElementById("username").value.length < 17){
+				jQuery.ajax({
+					type:"POST",
+					data:'username='+document.getElementById("username").value,
+					url:usernameURL,
+			
+					cache:false,
+					success:function(response){
+						if(response=="ok"){
+							document.getElementById("username").style.background="white";		
+							bolusername = true;
+							return true;
+						}else{
+							starterror("Dieser Nutzername wird schon benutzt","","red");
+							document.getElementById("username").style.background="red";		
+							bolusername = false;
+						}
+					}
+				});
+			}else{
+				starterror("Der Nutzername ist zu lang","","red");
+				document.getElementById("username").style.background="red";	
+				document.getElementById("c1").value= "error";
+			
+			}
+			}
+			
+			function checkpassequal(){
+				pass1 = document.getElementById("pass1").value;
+				pass2 = document.getElementById("pass2").value;
+				if(pass1!=pass2){
+					document.getElementById("pass2").style.background="red";
+					bolpass2 = false;
+				}else{
+					document.getElementById("pass2").style.background="white";
+					bolpass2 = true;
+					return true;
+				}
+			}
+			function submit(){
+				stoperror();
+				checkpassequal();
+				checkusername();
+				checkpassgood();
+				checkemail();
+				if(bolpass2 == true && bolpass1 == true && bolemail == true && bolusername==true && document.getElementById("firstname").value!="" && document.getElementById("lastname").value != ""){
+					
+					jQuery.ajax({
+					type:"POST",
+					data:'username='+document.getElementById("username").value+'&password='+document.getElementById("pass1").value+'&email='+document.getElementById("email").value+'&firstname='+document.getElementById("firstname").value+'&lastname='+document.getElementById("lastname").value,
+					url:submitURL,
+			
+					cache:false,
+					success:function(response){
+						starterror(response,"Sie können sich nun einloggen.","green")
+					}
+					
+				});
+					
+				}else{
+					starterror("Du konntest dich nicht registrieren.","Überprüfe deine Angaben noch einmal","red");
+				}
+				
+			}
+			
+				
+
+		</script>	
+	</head>
+	
+	
+	<body onload="clear();">
+		<div id="error">
+			<h3 id="e1"><h3 id="e2" style="margin-top:0px;"></h3></h3>
+		</div>
+		<div class="c">
+			<h1>Registrierung</h1>
+			<hr>
+			
+			<div class="vorname">
+			   <span>Vorname:</span>		
+				<input type="text" id="firstname">
+			</div>
+			
+			<div class="nachname">
+				<span>Nachname:</span>		
+				<input type="text" id="lastname">
+					
+			</div>
+			
+			<div class="benutzername">
+				<span>Benutzername:</span>		
+				<input type="text" id="username" onkeyup="checkusername()" title="Wähle einen Nutzernamen">
+			
+			</div>
+			<div class="email">
+				<span>Email-Adresse:</span>		
+				<input type="text" onchange="checkemail()"  id="email">
+			</div>
+			<div class="passwort1">
+				<span>Passwort:</span>		
+				<input type="password" onchange="checkpassgood()" id="pass1">
+			</div>
+			<div class="passwort2">
+				<span>Passwort wiederholen:</span>		
+				<input type="password" onchange="checkpassequal()"id="pass2">
+			
+			</div>
+			<div class="submit">
+				<br>
+				<input type="button" value="Registrieren" onClick="submit()" style="width:35%;margin-left:185px;border-style:outset;font-family: 'Comic Sans MS';font-weight:900px;font-size:larger;margin-bottom:5px;"/>
+				
+			</div>
+			
+				
+			
+		</div>
+		<span id="c1"></span>
+		<span id="c2"></span>
+		<span id="c3"></span>
+		<span id="c4"></span>
+		
+	
+	
+	
+	</body>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
