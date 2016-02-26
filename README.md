@@ -56,7 +56,7 @@ register.html:149 - Sie können hier die maximal Länge des Benutzernamens ände
 
 #CONNECT.PHP
 connect.php:3 - Ändern sie die Server Adresse, den Benutzernamen und das Passwort auf ihre Ansprüche
-    - mysql_connect(server, username, passwort);
+                - mysql_connect(server, username, passwort);
 
 connect.php:4 - Ändern sie den Namen auf den Namen ihrer Datenbank
 
