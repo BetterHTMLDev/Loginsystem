@@ -26,20 +26,19 @@ Falls sie diese Dinge nicht in dieser Reihenfolge kann und wird es zu Fehlern ko
 #BEVOR BENUTZUNG:
 
 Bevor sie die Websides benutzen können, müssen sie diese auf Ihre Ansprüche individualisieren. Das heisst, sie müssen oder können bei manchen vorgegebenen Variablen Werte einsetzten.
-                
-                |
-                |
-                |
-                V
+
 
 
 #LOGIN.HTML
-        login.html:6 - Hintergrundfarbe oder -bild festlegen.
-        login.html:93 - Link der Seite einfügen, auf die der Nutzer nach erfolgreichem Login geleitet werden soll.
-        login.html:94 & login.html:95 - Bei Aufrufen der login.html Seite angezeigter Text (Kann ausgestellt werden, indem sie die "function info()" löschen)
+login.html:6 - Hintergrundfarbe oder -bild festlegen.
 
-        Bei der Login.html habe ich die Funktion, dass man sich nur mithilfe der Email Adresse einloggen kann unwirksam gemacht. Indem sie in login.html:103,131,136,159 und 167 die Kommentarzeichen entfernen,
-        können sie die funktion allerdings aktivieren.
+login.html:93 - Link der Seite einfügen, auf die der Nutzer nach erfolgreichem Login geleitet werden soll.
+
+login.html:94 & login.html:95 - Bei Aufrufen der login.html Seite angezeigter Text (Kann ausgestellt werden, indem sie die "function info()" löschen)
+
+
+Bei der Login.html habe ich die Funktion, dass man sich nur mithilfe der Email Adresse einloggen kann unwirksam gemacht. Indem sie in login.html:103,131,136,159 und 167 die Kommentarzeichen entfernen,
+können sie die funktion allerdings aktivieren.
 
 
 #REGISTER.HTML
@@ -56,14 +55,12 @@ register.html:138 - Hier können sie den Text ändern, der Ausgegeben wird, wenn
 register.html:149 - Sie können hier die maximal Länge des Benutzernamens ändern. (Am besten abgestimmt auf die Länge des Varchars in ihrer MYSQL Datenbank)
 
 #CONNECT.PHP
-    
-    connect.php:3 - Ändern sie die Server Adresse, den Benutzernamen und das Passwort auf ihre Ansprüche
-            - mysql_connect(server, username, passwort);
-    connect.php:4 - Ändern sie den Namen auf den Namen ihrer Datenbank
+connect.php:3 - Ändern sie die Server Adresse, den Benutzernamen und das Passwort auf ihre Ansprüche
+    - mysql_connect(server, username, passwort);
 
+connect.php:4 - Ändern sie den Namen auf den Namen ihrer Datenbank
 
-    Nachdem sie diese Änderen vorgenommen haben, sollen die Seiten reibungslos funktionieren. 
+Nachdem sie diese Änderen vorgenommen haben, sollen die Seiten reibungslos funktionieren. 
 
-
-
-    BetterHTMLDev - 2016
+#Created by
+BetterHTMLDev - 2016
