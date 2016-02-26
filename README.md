@@ -55,13 +55,14 @@ register.html:138 - Hier können sie den Text ändern, der Ausgegeben wird, wenn
 register.html:149 - Sie können hier die maximal Länge des Benutzernamens ändern. (Am besten abgestimmt auf die Länge des Varchars in ihrer MYSQL Datenbank)
 
 #CONNECT.PHP
-connect.php:3 - Ändern sie die Server Adresse, den Benutzernamen und das Passwort auf ihre Ansprüche
-        - mysql_connect(server, username, passwort);
-connect.php:4 - Ändern sie den Namen auf den Namen ihrer Datenbank
+    
+    connect.php:3 - Ändern sie die Server Adresse, den Benutzernamen und das Passwort auf ihre Ansprüche
+            - mysql_connect(server, username, passwort);
+    connect.php:4 - Ändern sie den Namen auf den Namen ihrer Datenbank
 
 
-Nachdem sie diese Änderen vorgenommen haben, sollen die Seiten reibungslos funktionieren. 
+    Nachdem sie diese Änderen vorgenommen haben, sollen die Seiten reibungslos funktionieren. 
 
 
 
-BetterHTMLDev - 2016
+    BetterHTMLDev - 2016
